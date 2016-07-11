@@ -76,7 +76,13 @@ section .row img {
   min-width: 32px;
   max-height: 120px;
 }
-
+.btn.btn-lower-image {
+  border-radius: 2px;
+  border: 0px;
+  color: black;
+  text-shadow: none;
+  background-color: #ffffff;
+}
 .btn.btn-lower-image:hover {
   color: white;
   background-color: black;
