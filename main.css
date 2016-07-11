@@ -56,8 +56,9 @@ header p {
 }
 
 .lower-image h2 {
-  font-size: 60px;
-  font-weight: 700;
+  align-items: center;
+  font-size: 30px;
+  font-weight: 400;
   margin: 0;
   color: black;
 }
