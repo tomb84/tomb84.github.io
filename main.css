@@ -80,6 +80,13 @@ header p {
   align-items: center;
 }
 
+section .a380_row img {
+  margin: 0 0 30px;
+  width: 100%;
+  max-height:100px;
+}
+
+
 section .row img {
   margin: 0 0 30px;
   width: 100%;
