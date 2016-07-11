@@ -76,8 +76,9 @@ header p {
 
 .a380-image-head {
   max-height:150px;
-  padding:10px;
-  margin: 5px
+  padding:5px;
+  margin: 5px;
+  align-items: center;
 }
 
 section .row img {
