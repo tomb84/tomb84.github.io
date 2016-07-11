@@ -28,7 +28,7 @@ header p {
   margin: 0;
 }
 
-main p {
+.main-text {
   font-size:20px
   font-weight:200;
 }
