@@ -82,6 +82,8 @@ section .row img {
   color: black;
   text-shadow: none;
   background-color: #ffffff;
+  font-size: 30px;
+  font-weight: 400;
 }
 .btn.btn-lower-image:hover {
   color: white;
