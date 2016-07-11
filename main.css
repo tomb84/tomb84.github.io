@@ -74,17 +74,23 @@ header p {
   color: #fff;
 }
 
-.a380-img-head {
-  max-height:50px;
-  padding:5px;
-  align-items: center;
+.blog-header {
+  align-center;
+}
+
+.blog-text {
+  align:center;
+  padding: 15px;
+  font-size:15px;
+  font-weight:200;
 }
 
 section .a380_row img {
-  margin: 0 0 30px;
+  padding: 0 0 0 0;
+  margin: 0 0 20px;
   width: 80%;
   align-items: center;
-  max-height:200px;
+  max-height:170px;
 }
 
 
