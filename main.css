@@ -72,9 +72,9 @@ section .row img {
   margin: 0 0 30px;
 }
 
-.col-sm-1 img {
+.col-sm-4 img {
   min-width: 32px;
-  min-height: 33px;
+  max-height: 200px;
 }
 
 .btn.btn-primary {
