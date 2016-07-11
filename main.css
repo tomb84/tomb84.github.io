@@ -50,6 +50,16 @@ header p {
   color: #fff;
 }
 
+.lower-image {
+  padding:10px;
+  marin: 5px
+}
+
+.lower-image h2 {
+  margin: 20 0 20px;
+  color: #fff;
+}
+
 section .row img {
   margin: 0 0 30px;
   width: 100%;
