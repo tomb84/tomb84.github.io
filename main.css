@@ -74,6 +74,12 @@ header p {
   color: #fff;
 }
 
+.a380-image-head {
+  max-height:150px;
+  padding:10px;
+  margin: 5px
+}
+
 section .row img {
   margin: 0 0 30px;
   width: 100%;
