@@ -57,7 +57,7 @@ header p {
 
 .lower-image h2 {
   align-items: center;
-  font-size: 25px;
+  font-size: 30px;
   font-weight: 400;
   margin: 0;
   color: black;
@@ -82,7 +82,7 @@ section .row img {
   color: black;
   text-shadow: none;
   background-color: #ffffff;
-  font-size: 30px;
+  font-size: 25px;
   font-weight: 400;
 }
 .btn.btn-lower-image:hover {
