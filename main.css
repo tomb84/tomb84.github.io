@@ -52,7 +52,7 @@ header p {
 
 .lower-image {
   padding:10px;
-  marin: 5px
+  margin: 5px
 }
 
 .lower-image h2 {
@@ -74,7 +74,7 @@ section .row img {
 
 .col-sm-4 img {
   min-width: 32px;
-  max-height: 200px;
+  max-height: 40px;
 }
 
 .btn.btn-primary {
