@@ -1,13 +1,12 @@
 <html>
  <head>
    <script type="text/javascript" src="d3.js"></script>
-   <script var de = [{'count': 728, 'name': 'sample0'}, {'count': 824, 'name': 'sample1'}, {'count': 963, 'name': 'sample2'}, {'count': 927, 'name': 'sample3'}, {'count': 221, 'name': 'sample4'}, {'count': 574, 'name': 'sample5'}, {'count': 733, 'name': 'sample6'}, {'count': 257, 'name': 'sample7'}, {'count': 879, 'name': 'sample8'}, {'count': 620, 'name': 'sample9'}];></script>
-   
  </head>
  <body>
-   <script type="text/javascript"></script>
-   #Now make the figure
-   var mySVG = d3.select("body").append("svg");
+   <script type="text/javascript">
+   de = [{'count': 728, 'name': 'sample0'}, {'count': 824, 'name': 'sample1'}, {'count': 963, 'name': 'sample2'}, {'count': 927, 'name': 'sample3'}, {'count': 221, 'name': 'sample4'}, {'count': 574, 'name': 'sample5'}, {'count': 733, 'name': 'sample6'}, {'count': 257, 'name': 'sample7'}, {'count': 879, 'name': 'sample8'}, {'count': 620, 'name': 'sample9'}];
+
+  var mySVG = d3.select("body").append("svg");
    mySVG 
   .attr("width", 500) 
   .attr("height", 500);
@@ -50,5 +49,6 @@ mySVG.selectAll(".yTicks")
   .attr('x2',320)
   .attr('y2',function(d) {return 400 - heightScale(d);})
   .style('stroke','black');
+  </script>  
  </body>
 </html>
