@@ -33,7 +33,7 @@
 
 .chart text {
   fill: white;
-  font: 10px sans-serif;
+  font: 20px sans-serif;
   text-anchor: middle;
 }
 
@@ -73,7 +73,7 @@ d3.tsv("data.tsv", type, function(error, data) {
       .attr("x", barWidth / 2)
       .attr("y", function(d) { return y(d.value) + 3; })
       .attr("dy", ".75em")
-      .text(function(d) { return d.value; });
+      .text(d.name);
 });
 
 function type(d) {
