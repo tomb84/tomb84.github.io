@@ -101,6 +101,15 @@ section .a380_row img {
   max-width:800px;
 }
 
+.chart div {
+  font: 10px sans-serif;
+  background-color: steelblue;
+  text-align: right;
+  padding: 3px;
+  margin: 1px;
+  color: white;
+}
+
 section .blog_50_row img {
   width: 70%;
   display: block;
