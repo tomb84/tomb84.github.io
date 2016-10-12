@@ -1,67 +1,98 @@
-<html>
-<head>
-  <script type="text/javascript" src="d3.v3/d3.v3.js" charset="utf-8"></script>
-  <style>
-    .fig {
-      font-family:Arial;
-      font-size:10pt;
-      color:darkgray;
-    }
-  </style>
-  </head>
- <body>
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
 
-    <script type="text/javascript">
-    de = [{'count': 728, 'name': 'sample0'}, {'count': 824, 'name': 'sample1'}, {'count': 963, 'name': 'sample2'}, {'count': 927, 'name': 'sample3'}, {'count': 221, 'name': 'sample4'}, {'count': 574, 'name': 'sample5'}, {'count': 733, 'name': 'sample6'}, {'count': 257, 'name': 'sample7'}, {'count': 879, 'name': 'sample8'}, {'count': 620, 'name': 'sample9'}];
+.background {
+  fill: none;
+  pointer-events: all;
+}
 
-    var mySVG = d3.select("body")
-      .append("svg")
-      .attr("width", 500) 
-      .attr("height", 500)
-      .style('position','absolute')
-      .style('top',50)
-      .style('left',40)
-      .attr('class','fig');
+#states {
+  fill: #aaa;
+}
 
-    var heightScale = d3.scale.linear()
-      .domain([0, d3.max(de,function(d) { return d.count;})])
-      .range([0, 400]);
+#states .active {
+  fill: orange;
+}
 
-    mySVG.selectAll(".xLabel")
-      .data(de)
-      .enter().append("svg:text")
-      .attr("x", function(d,i) {return 113 + (i * 22);})
-      .attr("y", 435)
-      .attr("text-anchor", "middle") 
-      .text(function(d,i) {return d.name;})
-      .attr('transform',function(d,i) {return 'rotate(-90,' + (113 + (i * 22)) + ',435)';}); 
+#state-borders {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 1.5px;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  pointer-events: none;
+}
 
-    mySVG.selectAll(".yLabel")
-      .data(heightScale.ticks(10))
-      .enter().append("svg:text")
-      .attr('x',80)
-      .attr('y',function(d) {return 400 - heightScale(d);})
-      .attr("text-anchor", "end") 
-      .text(function(d) {return d;}); 
+</style>
+<body>
+<script src="//d3js.org/d3.v3.min.js"></script>
+<script src="//d3js.org/topojson.v1.min.js"></script>
+<script>
 
-    mySVG.selectAll(".yTicks")
-      .data(heightScale.ticks(10))
-      .enter().append("svg:line")
-      .attr('x1','90')
-      .attr('y1',function(d) {return 400 - heightScale(d);})
-      .attr('x2',320)
-      .attr('y2',function(d) {return 400 - heightScale(d);})
-      .style('stroke','lightgray'); 
+var width = 960,
+    height = 500,
+    centered;
 
-    var myBars = mySVG.selectAll('rect')
-      .data(de)
-      .enter()
-      .append('svg:rect')
-      .attr('width',20)
-      .attr('height',function(d,i) {return heightScale(d.count);})
-      .attr('x',function(d,i) {return (i * 22) + 100;})
-      .attr('y',function(d,i) {return 400 - heightScale(d.count);})
-      .style('fill','lightblue'); </script>
-     <p>Hello There Again - I'm at the bottom</p>
- </body>
-</html>
+var projection = d3.geo.albersUsa()
+    .scale(1070)
+    .translate([width / 2, height / 2]);
+
+var path = d3.geo.path()
+    .projection(projection);
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+svg.append("rect")
+    .attr("class", "background")
+    .attr("width", width)
+    .attr("height", height)
+    .on("click", clicked);
+
+var g = svg.append("g");
+
+d3.json("/mbostock/raw/4090846/us.json", function(error, us) {
+  if (error) throw error;
+
+  g.append("g")
+      .attr("id", "states")
+    .selectAll("path")
+      .data(topojson.feature(us, us.objects.states).features)
+    .enter().append("path")
+      .attr("d", path)
+      .on("click", clicked);
+
+  g.append("path")
+      .datum(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; }))
+      .attr("id", "state-borders")
+      .attr("d", path);
+});
+
+function clicked(d) {
+  var x, y, k;
+
+  if (d && centered !== d) {
+    var centroid = path.centroid(d);
+    x = centroid[0];
+    y = centroid[1];
+    k = 4;
+    centered = d;
+  } else {
+    x = width / 2;
+    y = height / 2;
+    k = 1;
+    centered = null;
+  }
+
+  g.selectAll("path")
+      .classed("active", centered && function(d) { return d === centered; });
+
+  g.transition()
+      .duration(750)
+      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+      .style("stroke-width", 1.5 / k + "px");
+}
+
+</script>
