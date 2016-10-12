@@ -26,9 +26,6 @@
   </header>
 
   <style>
-
-    
-
 .bar {
   fill: steelblue;
 }
@@ -100,4 +97,9 @@ d3.tsv("data.tsv", type, function(error, data) {
       .attr("width", x.rangeBand());
 });
 
-  </script>
+function type(d) {
+  d.value = +d.value; // coerce to number
+  return d;
+}
+
+</script>
